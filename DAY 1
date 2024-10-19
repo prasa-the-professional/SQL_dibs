@@ -1,0 +1,45 @@
+create table products
+(
+	product_code 	int,
+	product_name	varchar(20),
+	price			float,
+	release_date	date
+);
+
+select * from products;
+
+--inserting/loading value into the table
+
+--Method 1
+insert into products values(103,'iphone15_plus',700,'07-22-2024')
+--Method 2
+insert into products(product_code,product_name,price,release_date)
+values(100,'s24',450,'07-22-2024') --'mm-dd-yyyy'
+
+--using to_date() function to change the format of the date
+insert into products(product_code,product_name,price,release_date)
+values(101,'s24plus',549.99,to_date('22-07-2024','dd-mm-yyyy') )
+insert into products(product_code,product_name,price,release_date)
+values(102,'s24ultra',899.99,to_date('22-07-2024','dd-mm-yyyy') )
+insert into products(product_code,product_name,price,release_date)
+values(103,'iphone15',600.00,to_date('22-07-2024','dd-mm-yyyy') )
+
+
+INSERT INTO products (product_code, product_name, price, release_date)
+VALUES
+('103', 'Smartphone X1', 699.99, '2023-01-15'),
+('104', 'Laptop Y2', 999.99, '2023-02-20'),
+('105', 'Tablet Z3', 399.99, '2023-03-05'),
+('106', 'Smartwatch W4', 199.99, '2023-04-10'),
+('107', 'Headphones H5', 149.99, '2023-05-15'),
+('108', 'Bluetooth Speaker B6', 89.99, '2023-06-01'),
+('109', 'Gaming Console G7', 499.99, '2023-07-22'),
+('110', 'Camera C8', 799.99, '2023-08-12'),
+('111', 'Smart TV S9', 1199.99, '2023-05-05')
+
+
+
+select * 
+from products 
+where price <500 
+
