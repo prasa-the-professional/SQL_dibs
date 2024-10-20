@@ -1,0 +1,128 @@
+select sum(price)
+from products;
+
+select count(*)
+from products
+
+select avg(price) as average
+from products
+
+select *
+from products
+where price between 400 and 500 
+
+select *
+from products
+
+update products
+set product_code = 113
+where product_name = 'iphone15'
+
+select * 
+from products
+where product_name like 'iphone%'
+
+-- to view the tables in a database
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'public';
+
+delete from mmid;
+
+select * 
+from mmid;
+
+-- creating a copy database
+create table products_bk
+as 
+select * from products
+
+--creating a copy with only the attributes
+create table products_b
+as 
+select * from products
+where 1=2 --to justify it is false
+
+select * from products_b
+
+select * from products_bk
+
+--deletes the whole schema of the table
+truncate products_bk
+
+
+drop table if exists products_bkp
+drop table products_bk,products_b
+
+
+create table products_duplicate
+as select * from products
+
+select * from products_bkp
+
+
+alter table products_duplicate rename to products_bkp
+
+alter table products_bkp rename column product_code to code
+
+alter table products_bkp alter column code type float
+
+
+select *
+from products, products_bkp
+
+
+drop table products_2pk
+create table products_2pk
+(
+	product_code 	int,
+	product_name	varchar(20),
+	price			float,
+	release_date	date,
+	constraint  pk_init_price_release primary key (price,release_date)
+);
+
+select * from products_2pk
+
+INSERT INTO products_2pk (product_code, product_name, price, release_date)
+VALUES
+('103', 'Smartphone X1', 699.99, '2023-01-15'),
+('104', 'Laptop Y2', 999.99, '2023-02-20'),
+('105', 'Tablet Z3', 399.99, '2023-03-05'),
+('106', 'Smartwatch W4', 199.99, '2023-04-10'),
+('107', 'Headphones H5', 149.99, '2023-05-15'),
+('108', 'Bluetooth Speaker B6', 89.99, '2023-06-01'),
+('109', 'Gaming Console G7', 499.99, '2023-07-22'),
+('110', 'Camera C8', 799.99, '2023-08-12'),
+('111', 'Smart TV S9', 1199.99, '2023-05-05')
+
+
+
+create table dummy(	
+	product_code 	int generated always as identity,
+	product_name	varchar(20),
+	price			float,
+	release_date	date
+
+)
+
+
+insert into dummy (product_code,product_name,price,release_date)
+values
+(default, 'Smartphone X1', 699.99, '2023-01-15'),
+(default, 'Laptop Y2', 999.99, '2023-02-20'),
+(default, 'Tablet Z3', 399.99, '2023-03-05'),
+(default, 'Smartwatch W4', 199.99, '2023-04-10'),
+(default, 'Headphones H5', 149.99, '2023-05-15'),
+(default, 'Bluetooth Speaker B6', 89.99, '2023-06-01'),
+(default, 'Gaming Console G7', 499.99, '2023-07-22'),
+(default, 'Camera C8', 799.99, '2023-08-12'),
+(default, 'Smart TV S9', 1199.99, '2023-05-05')
+
+
+select * from dummy
+
+
+
+
+
