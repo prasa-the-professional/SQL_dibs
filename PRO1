@@ -1,0 +1,23 @@
+SELECT * FROM products;
+SELECT * FROM customers;
+SELECT * FROM employees;
+SELECT * FROM sales_order;
+
+--2 
+select status
+from sales_order
+where status not in ('completed','Completed')
+
+select status
+from sales_order
+where lower(status) <> 'completed'
+
+-- for selecting the non repeated appearances.
+select distinct status
+from sales_order
+
+--3
+select o.order_id, o.order_date, p.name
+from sales_order as o 
+inner join products as p on p.id = o.prod_id
+where lower(status) = 'completed'
